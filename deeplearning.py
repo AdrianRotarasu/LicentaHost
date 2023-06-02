@@ -10,6 +10,7 @@ from io import BytesIO
 #project = rf.workspace().project("vehicle-registartion-plate-finder")
 #modelRf = project.version(2).model
 modelYolov8 = YOLO('./static/models/yolov8v2.pt')
+print('model loaded')
 
 
 
@@ -17,6 +18,7 @@ modelYolov8 = YOLO('./static/models/yolov8v2.pt')
 
 
 def modify(file_stream):
+    print(' modified upload ')
     image = Image.open(file_stream)
     results = modelYolov8(image)
     cods = results[0].boxes.xyxy
